@@ -4158,3 +4158,15 @@ button.primary:hover {
 /* Asegura que el video quede debajo del overlay */
 #banner #banner-video { z-index: 0; }
 #banner .inner, #banner .more { z-index: 2; }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* ajusta intensidad */
+  z-index: 1;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+}
