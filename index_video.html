@@ -7,46 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-			/* ── Forzar foto de fondo sobre el CSS del tema ── */
-			#banner {
-				background-image: url('images/templo.png') !important;
-				background-size: cover !important;
-				background-position: center center !important;
-				background-repeat: no-repeat !important;
-			}
-			/* Oscurecer ligeramente para que el texto resalte sobre la foto */
-			#banner::before {
-				background-color: rgba(0, 0, 0, 0.45) !important;
-			}
-			/* ── Layout del banner ── */
-			#banner .inner {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				text-align: center;
-			}
-			/* ── Logo con fondo crema semitransparente ── */
-			.logo-container {
-				background: rgba(255, 250, 240, 0.82);
-				backdrop-filter: blur(6px);
-				-webkit-backdrop-filter: blur(6px);
-				border-radius: 12px;
-				padding: 1.2em 2em;
-				display: inline-block;
-				margin-bottom: 1.5em;
-				box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-			}
-			/* ── Logo nítido ── */
-			.logo-municipio {
-				width: 420px;
-				max-width: 85vw;
-				height: auto;
-				image-rendering: -webkit-optimize-contrast;
-				image-rendering: crisp-edges;
-				filter: drop-shadow(0 2px 12px rgba(0,0,0,0.6));
-			}
-		</style>
 	</head>
 	<body class="landing is-preload">
 
@@ -73,6 +33,16 @@
 
 				<!-- Banner -->
 				<section id="banner">
+
+				  <video id="banner-video"
+				         autoplay
+				         muted
+				         loop
+				         playsinline
+				         preload="auto"
+				         poster="images/banner-poster.jpg">
+				    <source src="assets/video/video.mp4" type="video/mp4">
+				  </video>
 
 				<div class="inner">
 
@@ -208,5 +178,14 @@ procesiones y actividades que unen a toda la comunidad.</p>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+			  window.addEventListener("load", function () {
+			    const v = document.getElementById("banner-video");
+			    if (!v) return;
+			    v.muted = true;
+			    const p = v.play();
+			    if (p && typeof p.catch === "function") p.catch(() => {});
+			  });
+			</script>
 	</body>
 </html>
