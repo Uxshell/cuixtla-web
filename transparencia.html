@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Transparencia 2026 - Santa Catarina Cuixtla</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			#main > header {
+				background: linear-gradient(135deg, #1b1f22 0%, #2d3436 60%, #1e3a5f 100%);
+				padding: 6em 2em 4em;
+				text-align: center;
+			}
+			#main > header h2 {
+				font-size: 2.4em;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: #ffffff;
+				margin-bottom: 0.3em;
+			}
+			#main > header p {
+				color: #a8c7e8;
+				font-size: 1.05em;
+				letter-spacing: 0.05em;
+			}
+			.wrapper.style5 .inner {
+				max-width: 960px;
+				margin: 0 auto;
+			}
+			.trimestre-titulo {
+				display: flex;
+				align-items: center;
+				gap: 0.7em;
+				margin: 2.5em 0 1.2em;
+				padding-bottom: 0.6em;
+				border-bottom: 2px solid #3a7bd5;
+			}
+			.trimestre-titulo .badge {
+				background: #3a7bd5;
+				color: #fff;
+				font-size: 0.7em;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				padding: 0.35em 0.8em;
+				border-radius: 3px;
+				white-space: nowrap;
+			}
+			.trimestre-titulo h3 {
+				margin: 0;
+				font-size: 1.35em;
+				color: #1a2a3a;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+			.carpeta {
+				background: #ffffff;
+				border: 1px solid #c8d4e8;
+				border-radius: 6px;
+				margin-bottom: 1.2em;
+				overflow: hidden;
+				box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+			}
+			.carpeta-header {
+				display: flex;
+				align-items: center;
+				gap: 0.7em;
+				padding: 0.85em 1.2em;
+				background: #eef2f8;
+				cursor: pointer;
+				user-select: none;
+				transition: background 0.2s;
+			}
+			.carpeta-header:hover { background: #dce6f5; }
+			.carpeta-header h4 {
+				margin: 0;
+				font-size: 0.95em;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				color: #1a2a3a;
+				flex: 1;
+			}
+			.carpeta-header .toggle-arrow {
+				color: #5577aa;
+				font-size: 0.8em;
+				transition: transform 0.25s;
+			}
+			.carpeta-header.open .toggle-arrow { transform: rotate(90deg); }
+			.carpeta-body { display: none; padding: 0.5em 1.2em 1em; background: #fff; }
+			.carpeta-body.visible { display: block; }
+			.doc-list { list-style: none; margin: 0.4em 0 0; padding: 0; }
+			.doc-list li {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1em;
+				padding: 0.55em 0;
+				border-bottom: 1px solid #e8edf4;
+			}
+			.doc-list li:last-child { border-bottom: none; }
+			.doc-info { display: flex; align-items: center; gap: 0.6em; flex: 1; min-width: 0; }
+			.doc-info .doc-icon { font-size: 1.2em; flex-shrink: 0; }
+			.doc-icon.pdf  { color: #c0392b; }
+			.doc-icon.xlsx { color: #1e8449; }
+			.doc-name { font-size: 0.92em; color: #2c3e50; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+			.doc-size  { font-size: 0.75em; color: #5577aa; flex-shrink: 0; font-weight: 600; }
+			.btn-download {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.4em;
+				background: #3a7bd5;
+				color: #fff !important;
+				font-size: 0.75em;
+				font-weight: 600;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				padding: 0.4em 0.9em;
+				border-radius: 4px;
+				text-decoration: none;
+				white-space: nowrap;
+				transition: background 0.2s, transform 0.1s;
+				flex-shrink: 0;
+			}
+			.btn-download:hover { background: #2563b8; transform: translateY(-1px); }
+			.btn-download.zip   { background: #d68910; }
+			.btn-download.zip:hover { background: #b7770d; }
+			.btn-download.excel { background: #1e8449; }
+			.btn-download.excel:hover { background: #196f3d; }
+			.zip-destacado {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1em;
+				background: #fff8ec;
+				border: 1px dashed #d68910;
+				border-radius: 6px;
+				padding: 1em 1.2em;
+				margin: 0.8em 0 0.4em;
+			}
+			.zip-info { display: flex; align-items: center; gap: 0.8em; }
+			.zip-icon { font-size: 2em; }
+			.zip-desc strong { display: block; color: #a05000; font-size: 0.95em; margin-bottom: 0.2em; }
+			.zip-desc span { font-size: 0.8em; color: #6677aa; }
+			.nota-info {
+				background: #eef4ff;
+				border-left: 3px solid #3a7bd5;
+				border-radius: 0 4px 4px 0;
+				padding: 0.9em 1.2em;
+				margin: 2em 0 0;
+				font-size: 0.88em;
+				color: #3a4a6a;
+				line-height: 1.6;
+			}
+			.nota-info strong { color: #1a2a4a; }
+			@media screen and (max-width: 600px) {
+				.doc-list li { flex-wrap: wrap; }
+				.doc-size { display: none; }
+				.btn-download { font-size: 0.7em; }
+				#main > header h2 { font-size: 1.6em; }
+				.zip-destacado { flex-direction: column; align-items: flex-start; }
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<header id="header">
+				<h1><a href="index.html">Santa Catarina Cuixtla</a></h1>
+				<nav id="nav">
+					<ul>
+						<li class="special">
+							<a href="#menu" class="menuToggle"><span>Menu</span></a>
+							<div id="menu">
+								<ul>
+									<li><a href="index.html">INICIO</a></li>
+									<li><a href="transparencia.html">TRANSPARENCIA 2026</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<article id="main">
+				<header>
+					<h2>TRANSPARENCIA</h2>
+					<p>Gobierno Municipal 2026-2028 &nbsp;·&nbsp; Información pública de oficio</p>
+				</header>
+
+				<section class="wrapper style5">
+					<div class="inner">
+
+						<p>De conformidad con la <strong>Ley de Disciplina Financiera</strong> y las disposiciones del
+						<strong>CONAC</strong>, el H. Ayuntamiento de Santa Catarina Cuixtla pone a disposición
+						de la ciudadanía la información financiera y de gestión municipal correspondiente
+						al ejercicio fiscal <strong>2026</strong>.</p>
+
+						<div class="trimestre-titulo">
+							<span class="badge">2026</span>
+							<h3>Primer Trimestre — Enero · Febrero · Marzo</h3>
+						</div>
+
+						<!-- CONAC -->
+						<div class="carpeta">
+							<div class="carpeta-header open" onclick="toggleCarpeta(this)">
+								<span>📁</span>
+								<h4>CONAC — Información Contable y Financiera</h4>
+								<span class="toggle-arrow">▶</span>
+							</div>
+							<div class="carpeta-body visible">
+								<ul class="doc-list">
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">1. FAIS</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/1. fais.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">2. Ayudas</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/2. ayudas.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">3. Gasto Federalizado</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/3. gasto federalizado.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">4. Obligaciones Pagadas</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/4. obligaciones pagadas.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">5. Programas Recursos Federalizados</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/5. programas recursos fed.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">6. Cuentas Bancarias</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/6. cuentas bancarias.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">7. Resultado de Evaluaciones</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/7. Resultado de evaluaciones.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">8. FORTAMUN</span></div>
+										<span class="doc-size">PDF</span>
+										<a href="archivos/conac/8. fortamun.pdf" download class="btn-download">⬇ Descargar</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- ESTADOS FINANCIEROS ZIP -->
+						<div class="carpeta">
+							<div class="carpeta-header open" onclick="toggleCarpeta(this)">
+								<span>📁</span>
+								<h4>Estados Financieros — Fin 1er Trimestre 2026</h4>
+								<span class="toggle-arrow">▶</span>
+							</div>
+							<div class="carpeta-body visible">
+								<p style="font-size:0.87em; color:#4a5a7a; margin-bottom:0.8em;">
+									Paquete completo con los estados financieros del 1er trimestre 2026
+									(Notas Financieras + formatos 362A_ITAG / 362A_ITEF).
+								</p>
+								<div class="zip-destacado">
+									<div class="zip-info">
+										<span class="zip-icon">🗜️</span>
+										<div class="zip-desc">
+											<strong>estados2026.zip</strong>
+											<span>Todos los archivos del 1er Trimestre 2026</span>
+										</div>
+									</div>
+									<a href="archivos/estados-fin-1-2026/estados2026.zip" download class="btn-download zip">⬇ Descargar ZIP</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- LEY DISCIPLINA FINANCIERA -->
+						<div class="carpeta">
+							<div class="carpeta-header open" onclick="toggleCarpeta(this)">
+								<span>📁</span>
+								<h4>Ley de Disciplina Financiera — Informes 1T 2026</h4>
+								<span class="toggle-arrow">▶</span>
+							</div>
+							<div class="carpeta-body visible">
+								<ul class="doc-list">
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Balance Presupuestario</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/balance presupuestario-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Analítico de Ingresos Detallado</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/edo analitico ing detallado-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Clasificación Funcional</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/edo clasificacion funcional-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Clasificación Objeto del Gasto</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/edo clasificacion objeto del gasto-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Clasificación Servicios Personales</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/edo clasificacion servicios personales-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado por Clasificación Administrativa</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/edo por clasfificacion administrativa-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado de Situación Financiera Detallado</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/edo sit fin detallado-LDF.xls download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Informe de la Deuda y Otros Pasivos</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/inf de la deuda y otros pasivos-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+									<li>
+										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Informe de Obligaciones Diferentes</span></div>
+										<span class="doc-size">Excel</span>
+										<a href="archivos/ley/inf obligaciones diferentes-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="nota-info">
+							<strong>Nota:</strong> Los archivos PDF requieren
+							<a href="https://get.adobe.com/es/reader/" target="_blank" style="color:#7ab8e8;">Adobe Acrobat Reader</a>.
+							Los archivos Excel (.xlsx) pueden abrirse con Microsoft Excel, LibreOffice Calc o Google Sheets.
+							El archivo ZIP requiere WinRAR, 7-Zip o el descompresor integrado de Windows.<br><br>
+							Si algún documento no está disponible contáctanos en
+							<a href="index.html#cta" style="color:#7ab8e8;">Contáctanos</a>.
+						</div>
+
+					</div>
+				</section>
+			</article>
+
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; SHAGUS</li>
+					<li>Design: <a href="">Soluciones Informáticas</a></li>
+				</ul>
+			</footer>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			function toggleCarpeta(header) {
+				header.classList.toggle('open');
+				header.nextElementSibling.classList.toggle('visible');
+			}
+		</script>
+	</body>
+</html>
