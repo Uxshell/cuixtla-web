@@ -64,6 +64,14 @@
 		.archivo-icono.zip  { color:#d97706; }
 		.archivo-nombre { flex:1; font-size:.87em; font-weight:500; color:var(--texto); min-width:120px; }
 		.archivo-tipo   { font-size:.72em; font-weight:700; color:var(--texto-sub); flex-shrink:0; }
+		
+		.btn-externo { display:inline-flex; align-items:center; gap:.35em; background:#0f766e; color:#fff!important; font-size:.72em; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.45em .9em; border-radius:5px; text-decoration:none; white-space:nowrap; transition:background .2s,transform .1s; }
+		.btn-externo:hover { background:#0d6460; transform:translateY(-1px); }
+		.btn-pnt { display:inline-flex; align-items:center; gap:.35em; background:transparent; color:#0f766e!important; font-size:.72em; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.45em .9em; border-radius:5px; text-decoration:none; white-space:nowrap; border:1.5px solid #0f766e; transition:all .2s; }
+		.btn-pnt:hover { background:#f0fdfa; transform:translateY(-1px); }
+		.aviso-externo { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:.9em 1.2em; margin-bottom:1.5em; font-size:.85em; color:#166534; line-height:1.6; }
+		.aviso-externo strong { color:#14532d; }
+		.aviso-externo a { color:#15803d; font-weight:600; }
 		.nota-legal { background:#f8fafc; border:1px solid var(--gris-borde); border-radius:8px; padding:1.2em 1.5em; margin-top:2.5em; font-size:.82em; color:var(--texto-sub); line-height:1.7; }
 		.nota-legal strong { color:var(--texto); }
 		@media screen and (max-width:680px) {
@@ -119,6 +127,13 @@
 		<!-- ═══ TAB ART. 70 ═══ -->
 		<div id="tab-art70" class="tab-panel active"><div class="panel-box">
 			<p class="panel-desc">El <strong>Artículo 70 de la LGTAIP</strong> establece 48 fracciones de información que todos los sujetos obligados deben publicar y mantener actualizadas.</p>
+		<div class="aviso-externo">
+			📋 <strong>Nota:</strong> Mientras se suben los archivos propios del municipio, cada fracción enlaza al
+			<strong>formato oficial del IAIP Oaxaca</strong> y a la <strong>Plataforma Nacional de Transparencia (PNT)</strong>,
+			donde la información debe publicarse oficialmente. Cuando tengas el archivo listo, solo reemplaza el enlace en el código HTML.<br>
+			🔗 <strong>IAIP Oaxaca:</strong> <a href="https://iaipoaxaca.org.mx" target="_blank">iaipoaxaca.org.mx</a> &nbsp;|&nbsp;
+			🔗 <strong>PNT:</strong> <a href="https://www.plataformadetransparencia.org.mx" target="_blank">plataformadetransparencia.org.mx</a>
+		</div>
 
 			<!-- Macro para cada fracción: num | titulo | desc | ruta -->
 			<div class="fraccion-item">
@@ -128,9 +143,9 @@
 					<div class="fraccion-desc">Leyes, reglamentos, acuerdos, decretos, actos y demás disposiciones jurídicas que rigen al sujeto obligado.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac01-marco-normativo.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac01-marco-normativo.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -140,9 +155,9 @@
 					<div class="fraccion-desc">Estructura orgánica completa, las atribuciones y responsabilidades que corresponden a cada área.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac02-estructura-organica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac02-estructura-organica.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -152,9 +167,9 @@
 					<div class="fraccion-desc">Las facultades de cada área del sujeto obligado.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac03-facultades-areas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac03-facultades-areas.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -164,9 +179,9 @@
 					<div class="fraccion-desc">Metas y objetivos de las unidades administrativas conforme a sus programas operativos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac04-metas-objetivos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac04-metas-objetivos.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -176,9 +191,9 @@
 					<div class="fraccion-desc">Indicadores relacionados con temas de interés público o trascendencia social.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac05-indicadores.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac05-indicadores.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -188,9 +203,9 @@
 					<div class="fraccion-desc">Nombre, cargo, RFC, domicilio legal, teléfono y correo electrónico de los servidores públicos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac06-directorio.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac06-directorio.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -200,9 +215,9 @@
 					<div class="fraccion-desc">La remuneración bruta y neta de todos los servidores públicos de base o de confianza.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac07-remuneraciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac07-remuneraciones.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -212,9 +227,9 @@
 					<div class="fraccion-desc">Los gastos de representación y viáticos de los servidores públicos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac08-viaticos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac08-viaticos.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -224,9 +239,9 @@
 					<div class="fraccion-desc">El número total de las plazas y, en su caso, las vacantes disponibles.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac09-plazas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac09-plazas.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -236,9 +251,9 @@
 					<div class="fraccion-desc">Nombres de prestadores de servicios, servicios contratados, monto de honorarios y período de contratación.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac10-honorarios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac10-honorarios.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -248,9 +263,9 @@
 					<div class="fraccion-desc">La declaración patrimonial de los servidores públicos que así lo determinen las leyes.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac11-declaracion-patrimonial.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac11-declaracion-patrimonial.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -260,9 +275,9 @@
 					<div class="fraccion-desc">El domicilio de la Unidad de Transparencia y dirección electrónica para recibir solicitudes de información.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac12-unidad-transparencia.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac12-unidad-transparencia.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -272,9 +287,9 @@
 					<div class="fraccion-desc">Las convocatorias a concursos, licitaciones, contratos y convenios celebrados.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac13-contratos-licitaciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac13-contratos-licitaciones.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -284,9 +299,9 @@
 					<div class="fraccion-desc">Los permisos, concesiones, licencias, autorizaciones, habilitaciones y demás actos administrativos otorgados.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac14-permisos-concesiones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac14-permisos-concesiones.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -296,9 +311,9 @@
 					<div class="fraccion-desc">El presupuesto asignado, así como los informes del ejercicio trimestral del gasto.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac15-presupuesto.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac15-presupuesto.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -308,9 +323,9 @@
 					<div class="fraccion-desc">Los informes de actividades que los servidores públicos deban rendir.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac16-informes-actividades.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac16-informes-actividades.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -320,9 +335,9 @@
 					<div class="fraccion-desc">Las estadísticas que genere en cumplimiento de sus facultades, competencias o funciones.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac17-estadisticas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac17-estadisticas.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -332,9 +347,9 @@
 					<div class="fraccion-desc">Informes de avance trimestral sobre el cumplimiento de objetivos y metas de los programas.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac18-avance-programas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac18-avance-programas.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -344,9 +359,9 @@
 					<div class="fraccion-desc">El padrón de beneficiarios de los programas sociales que ejecute el sujeto obligado.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac19-padron-beneficiarios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac19-padron-beneficiarios.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -356,9 +371,9 @@
 					<div class="fraccion-desc">Las convocatorias a concursos para ocupar cargos públicos y los resultados de los mismos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac20-convocatorias.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac20-convocatorias.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -368,9 +383,9 @@
 					<div class="fraccion-desc">El inventario de bienes muebles e inmuebles en posesión y propiedad del sujeto obligado.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac21-inventario-bienes.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac21-inventario-bienes.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -380,9 +395,9 @@
 					<div class="fraccion-desc">Las recomendaciones emitidas por los organismos garantes de derechos humanos y atención a las mismas.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac22-recomendaciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac22-recomendaciones.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -392,9 +407,9 @@
 					<div class="fraccion-desc">Las resoluciones y laudos emitidos en procesos o procedimientos seguidos en forma de juicio.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac23-resoluciones-laudos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac23-resoluciones-laudos.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -404,9 +419,9 @@
 					<div class="fraccion-desc">Los mecanismos de participación ciudadana.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac24-participacion-ciudadana.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac24-participacion-ciudadana.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -416,9 +431,9 @@
 					<div class="fraccion-desc">Los programas que ofrecen, incluyendo población objetivo, trámites, tiempos de respuesta, requisitos y formatos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac25-programas-servicios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac25-programas-servicios.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -428,9 +443,9 @@
 					<div class="fraccion-desc">Los trámites, requisitos y formatos que ofrecen.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac26-tramites-formatos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac26-tramites-formatos.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -440,9 +455,9 @@
 					<div class="fraccion-desc">La información financiera sobre el presupuesto asignado, modificado y ejercido.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac27-info-financiera.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac27-info-financiera.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -452,9 +467,9 @@
 					<div class="fraccion-desc">La información relativa a la deuda pública.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac28-deuda-publica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac28-deuda-publica.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -464,9 +479,9 @@
 					<div class="fraccion-desc">La información de interés público que de acuerdo a sus funciones deba difundir.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac29-interes-publico.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac29-interes-publico.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -476,9 +491,9 @@
 					<div class="fraccion-desc">Los servicios de asesoría jurídica gratuita que preste el sujeto obligado.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac30-asesoria-juridica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac30-asesoria-juridica.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -488,9 +503,9 @@
 					<div class="fraccion-desc">Mecanismos e instrumentos de participación ciudadana, incluidos resultados de consultas realizadas.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac31-mecanismos-participacion.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac31-mecanismos-participacion.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -500,9 +515,9 @@
 					<div class="fraccion-desc">Las solicitudes de acceso a la información recibidas y las respuestas emitidas.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac32-solicitudes-info.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac32-solicitudes-info.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -512,9 +527,9 @@
 					<div class="fraccion-desc">Acciones y resultados para garantizar el acceso a la información de personas con discapacidad.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac33-discapacidad.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac33-discapacidad.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -524,9 +539,9 @@
 					<div class="fraccion-desc">Información curricular desde nivel de jefe de departamento hasta el titular del sujeto obligado.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac34-curricula-servidores.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac34-curricula-servidores.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -536,9 +551,9 @@
 					<div class="fraccion-desc">Seguros o garantías contratados, así como las sanciones y multas aplicadas a servidores públicos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac35-sanciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac35-sanciones.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -548,9 +563,9 @@
 					<div class="fraccion-desc">Los servicios que ofrece, señalando los estándares de calidad y los trámites para acceder a ellos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac36-servicios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac36-servicios.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -560,9 +575,9 @@
 					<div class="fraccion-desc">Listado especificando los titulares de concesiones, contratos, convenios, permisos, licencias o autorizaciones.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac37-concesiones-listado.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac37-concesiones-listado.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -572,9 +587,9 @@
 					<div class="fraccion-desc">La información detallada de las obras públicas ejecutadas.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac38-obra-publica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac38-obra-publica.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -584,9 +599,9 @@
 					<div class="fraccion-desc">Los montos destinados a gastos relativos a comunicación social y publicidad oficial.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac39-comunicacion-social.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac39-comunicacion-social.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -596,9 +611,9 @@
 					<div class="fraccion-desc">Las actas y resoluciones del Comité de Transparencia del sujeto obligado.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac40-comite-transparencia.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac40-comite-transparencia.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -608,9 +623,9 @@
 					<div class="fraccion-desc">Las evaluaciones y encuestas que se hagan a programas financiados con recursos públicos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac41-evaluaciones-encuestas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac41-evaluaciones-encuestas.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -620,9 +635,9 @@
 					<div class="fraccion-desc">Los estudios financiados con recursos públicos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac42-estudios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac42-estudios.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -632,9 +647,9 @@
 					<div class="fraccion-desc">El listado de jubilados y pensionados y el monto que reciben.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac43-jubilados-pensionados.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac43-jubilados-pensionados.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -644,9 +659,9 @@
 					<div class="fraccion-desc">Los ingresos recibidos por cualquier concepto, señalando responsables de recibirlos, administrarlos y ejercerlos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac44-ingresos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac44-ingresos.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -656,9 +671,9 @@
 					<div class="fraccion-desc">Las donaciones hechas a terceros en dinero o en especie.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac45-donaciones-terceros.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac45-donaciones-terceros.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -668,9 +683,9 @@
 					<div class="fraccion-desc">El catálogo de disposición documental y la guía de archivos.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac46-catalogo-archivos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac46-catalogo-archivos.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -680,9 +695,9 @@
 					<div class="fraccion-desc">Las actas de las sesiones del Ayuntamiento y el orden del día de las mismas.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac47-actas-sesiones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac47-actas-sesiones.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -692,9 +707,9 @@
 					<div class="fraccion-desc">Cualquier otra información útil o relevante, además de la que responda a las preguntas más frecuentes.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art70/frac48-informacion-util.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art70/frac48-informacion-util.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 		</div></div><!-- /tab-art70 -->
@@ -702,6 +717,11 @@
 		<!-- ═══ TAB ART. 71 ═══ -->
 		<div id="tab-art71" class="tab-panel"><div class="panel-box">
 			<p class="panel-desc">El <strong>Artículo 71 de la LGTAIP</strong> establece obligaciones específicas de transparencia para municipios, adicionales a las del Artículo 70.</p>
+		<div class="aviso-externo">
+			📋 <strong>Nota:</strong> Los botones enlazan al <strong>IAIP Oaxaca</strong> y a la <strong>PNT</strong> mientras subes tus propios archivos.
+			🔗 <a href="https://iaipoaxaca.org.mx" target="_blank">iaipoaxaca.org.mx</a> &nbsp;|&nbsp;
+			🔗 <a href="https://www.plataformadetransparencia.org.mx" target="_blank">plataformadetransparencia.org.mx</a>
+		</div>
 
 			<div class="fraccion-item">
 				<div class="fraccion-num">I</div>
@@ -710,9 +730,9 @@
 					<div class="fraccion-desc">El listado de las asociaciones y organizaciones vecinales o civiles con registro municipal.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art71/art71-frac01-asociaciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art71/art71-frac01-asociaciones.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -722,9 +742,9 @@
 					<div class="fraccion-desc">Las obras públicas con sus montos de ejecución y nombre de los contratistas o proveedores.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art71/art71-frac02-obras.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art71/art71-frac02-obras.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -734,9 +754,9 @@
 					<div class="fraccion-desc">La información relativa al presupuesto participativo y el ejercicio del mismo.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art71/art71-frac03-presupuesto-participativo.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art71/art71-frac03-presupuesto-participativo.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -746,9 +766,9 @@
 					<div class="fraccion-desc">El Plan de Desarrollo Municipal y el seguimiento a sus objetivos e indicadores.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art71/art71-frac04-plan-desarrollo.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art71/art71-frac04-plan-desarrollo.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -758,9 +778,9 @@
 					<div class="fraccion-desc">La información catastral del municipio.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art71/art71-frac05-catastro.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art71/art71-frac05-catastro.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -770,9 +790,9 @@
 					<div class="fraccion-desc">La tabla de valores unitarios de suelo y construcciones que sirven de base para las contribuciones sobre propiedad inmobiliaria.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art71/art71-frac06-valores-unitarios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art71/art71-frac06-valores-unitarios.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 			<div class="fraccion-item">
@@ -782,9 +802,9 @@
 					<div class="fraccion-desc">Los derechos, contribuciones, tarifas y tasas vigentes.</div>
 				</div>
 				<div class="fraccion-acciones">
-					<a href="archivos/art71/art71-frac07-derechos-tarifas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
-					<a href="archivos/art71/art71-frac07-derechos-tarifas.pdf" download class="btn-dl">⬇ Descargar</a>
-				</div>
+				<a href="https://iaipoaxaca.org.mx/transparencia" target="_blank" class="btn-externo">🌐 IAIP Oaxaca</a>
+				<a href="https://www.plataformadetransparencia.org.mx" target="_blank" class="btn-pnt">📋 PNT</a>
+			</div>
 			</div>
 
 		</div></div><!-- /tab-art71 -->
