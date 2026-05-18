@@ -1,382 +1,895 @@
 <!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Transparencia 2026 - Santa Catarina Cuixtla</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-			#main > header {
-				background: linear-gradient(135deg, #1b1f22 0%, #2d3436 60%, #1e3a5f 100%);
-				padding: 6em 2em 4em;
-				text-align: center;
-			}
-			#main > header h2 {
-				font-size: 2.4em;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-				color: #ffffff;
-				margin-bottom: 0.3em;
-			}
-			#main > header p {
-				color: #a8c7e8;
-				font-size: 1.05em;
-				letter-spacing: 0.05em;
-			}
-			.wrapper.style5 .inner {
-				max-width: 960px;
-				margin: 0 auto;
-			}
-			.trimestre-titulo {
-				display: flex;
-				align-items: center;
-				gap: 0.7em;
-				margin: 2.5em 0 1.2em;
-				padding-bottom: 0.6em;
-				border-bottom: 2px solid #3a7bd5;
-			}
-			.trimestre-titulo .badge {
-				background: #3a7bd5;
-				color: #fff;
-				font-size: 0.7em;
-				font-weight: 700;
-				letter-spacing: 0.1em;
-				text-transform: uppercase;
-				padding: 0.35em 0.8em;
-				border-radius: 3px;
-				white-space: nowrap;
-			}
-			.trimestre-titulo h3 {
-				margin: 0;
-				font-size: 1.35em;
-				color: #1a2a3a;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-			}
-			.carpeta {
-				background: #ffffff;
-				border: 1px solid #c8d4e8;
-				border-radius: 6px;
-				margin-bottom: 1.2em;
-				overflow: hidden;
-				box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-			}
-			.carpeta-header {
-				display: flex;
-				align-items: center;
-				gap: 0.7em;
-				padding: 0.85em 1.2em;
-				background: #eef2f8;
-				cursor: pointer;
-				user-select: none;
-				transition: background 0.2s;
-			}
-			.carpeta-header:hover { background: #dce6f5; }
-			.carpeta-header h4 {
-				margin: 0;
-				font-size: 0.95em;
-				text-transform: uppercase;
-				letter-spacing: 0.06em;
-				color: #1a2a3a;
-				flex: 1;
-			}
-			.carpeta-header .toggle-arrow {
-				color: #5577aa;
-				font-size: 0.8em;
-				transition: transform 0.25s;
-			}
-			.carpeta-header.open .toggle-arrow { transform: rotate(90deg); }
-			.carpeta-body { display: none; padding: 0.5em 1.2em 1em; background: #fff; }
-			.carpeta-body.visible { display: block; }
-			.doc-list { list-style: none; margin: 0.4em 0 0; padding: 0; }
-			.doc-list li {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				gap: 1em;
-				padding: 0.55em 0;
-				border-bottom: 1px solid #e8edf4;
-			}
-			.doc-list li:last-child { border-bottom: none; }
-			.doc-info { display: flex; align-items: center; gap: 0.6em; flex: 1; min-width: 0; }
-			.doc-info .doc-icon { font-size: 1.2em; flex-shrink: 0; }
-			.doc-icon.pdf  { color: #c0392b; }
-			.doc-icon.xlsx { color: #1e8449; }
-			.doc-name { font-size: 0.92em; color: #2c3e50; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-			.doc-size  { font-size: 0.75em; color: #5577aa; flex-shrink: 0; font-weight: 600; }
-			.btn-download {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.4em;
-				background: #3a7bd5;
-				color: #fff !important;
-				font-size: 0.75em;
-				font-weight: 600;
-				letter-spacing: 0.05em;
-				text-transform: uppercase;
-				padding: 0.4em 0.9em;
-				border-radius: 4px;
-				text-decoration: none;
-				white-space: nowrap;
-				transition: background 0.2s, transform 0.1s;
-				flex-shrink: 0;
-			}
-			.btn-download:hover { background: #2563b8; transform: translateY(-1px); }
-			.btn-download.zip   { background: #d68910; }
-			.btn-download.zip:hover { background: #b7770d; }
-			.btn-download.excel { background: #1e8449; }
-			.btn-download.excel:hover { background: #196f3d; }
-			.zip-destacado {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				gap: 1em;
-				background: #fff8ec;
-				border: 1px dashed #d68910;
-				border-radius: 6px;
-				padding: 1em 1.2em;
-				margin: 0.8em 0 0.4em;
-			}
-			.zip-info { display: flex; align-items: center; gap: 0.8em; }
-			.zip-icon { font-size: 2em; }
-			.zip-desc strong { display: block; color: #a05000; font-size: 0.95em; margin-bottom: 0.2em; }
-			.zip-desc span { font-size: 0.8em; color: #6677aa; }
-			.nota-info {
-				background: #eef4ff;
-				border-left: 3px solid #3a7bd5;
-				border-radius: 0 4px 4px 0;
-				padding: 0.9em 1.2em;
-				margin: 2em 0 0;
-				font-size: 0.88em;
-				color: #3a4a6a;
-				line-height: 1.6;
-			}
-			.nota-info strong { color: #1a2a4a; }
-			@media screen and (max-width: 600px) {
-				.doc-list li { flex-wrap: wrap; }
-				.doc-size { display: none; }
-				.btn-download { font-size: 0.7em; }
-				#main > header h2 { font-size: 1.6em; }
-				.zip-destacado { flex-direction: column; align-items: flex-start; }
-			}
-		</style>
-	</head>
-	<body class="is-preload">
-		<div id="page-wrapper">
+<html lang="es">
+<head>
+	<title>Transparencia — Santa Catarina Cuixtla 2026-2028</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+		:root {
+			--azul: #1d4ed8; --azul-hover: #1e40af; --azul-light: #dbeafe;
+			--verde: #15803d; --gris-bg: #f1f5f9; --gris-borde: #cbd5e1;
+			--texto: #1e293b; --texto-sub: #475569; --blanco: #ffffff;
+		}
+		#main > header {
+			background: linear-gradient(160deg,#0f172a 0%,#1e3a5f 50%,#0f2544 100%);
+			padding: 5em 2em 3.5em; text-align: center; position: relative; overflow: hidden;
+		}
+		#main > header::before {
+			content:''; position:absolute; inset:0;
+			background: repeating-linear-gradient(90deg,rgba(255,255,255,0.015) 0px,rgba(255,255,255,0.015) 1px,transparent 1px,transparent 60px);
+		}
+		#main > header h2 { font-size:2.2em; letter-spacing:.12em; text-transform:uppercase; color:#fff; margin-bottom:.3em; position:relative; }
+		#main > header p  { color:#93c5fd; font-size:1em; letter-spacing:.06em; position:relative; }
+		.header-badges { display:flex; gap:.6em; justify-content:center; margin-top:1em; flex-wrap:wrap; position:relative; }
+		.header-badge  { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); color:#e0f2fe; font-size:.72em; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:.4em 1em; border-radius:20px; }
+		.wrapper.style5 .inner { max-width:1000px; margin:0 auto; padding:3em 2em; }
+		.intro-text { background:var(--azul-light); border-left:4px solid var(--azul); border-radius:0 8px 8px 0; padding:1em 1.4em; margin-bottom:2.5em; font-size:.9em; color:#1e3a5f; line-height:1.7; }
+		.intro-text strong { color:#1d4ed8; }
+		.tabs-nav { display:flex; gap:0; margin-bottom:0; border-bottom:2px solid var(--gris-borde); flex-wrap:wrap; }
+		.tab-btn { padding:.8em 1.4em; font-size:.82em; font-weight:700; letter-spacing:.05em; text-transform:uppercase; cursor:pointer; border:2px solid var(--gris-borde); border-bottom:none; background:var(--gris-bg); color:var(--texto-sub); border-radius:8px 8px 0 0; margin-bottom:-2px; transition:all .2s; }
+		.tab-btn.active { background:var(--blanco); color:var(--azul); border-bottom-color:var(--blanco); }
+		.tab-btn:hover:not(.active) { background:var(--azul-light); color:var(--azul); }
+		.tab-panel { display:none; }
+		.tab-panel.active { display:block; }
+		.panel-box { background:var(--blanco); border:2px solid var(--gris-borde); border-top:none; border-radius:0 0 10px 10px; padding:2em; }
+		.panel-desc { font-size:.88em; color:var(--texto-sub); margin-bottom:1.8em; line-height:1.6; padding-bottom:1.2em; border-bottom:1px solid var(--gris-borde); }
+		.fraccion-item { display:flex; align-items:flex-start; gap:1em; padding:.9em .8em; border-radius:8px; border:1px solid transparent; margin-bottom:.4em; transition:background .15s,border-color .15s; }
+		.fraccion-item:hover { background:var(--gris-bg); border-color:var(--gris-borde); }
+		.fraccion-num { flex-shrink:0; width:2.2em; height:2.2em; background:var(--azul); color:#fff; font-size:.72em; font-weight:800; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-top:.1em; }
+		.fraccion-info { flex:1; min-width:0; }
+		.fraccion-titulo { font-size:.9em; font-weight:600; color:var(--texto); margin-bottom:.2em; line-height:1.4; }
+		.fraccion-desc   { font-size:.78em; color:var(--texto-sub); line-height:1.5; }
+		.fraccion-acciones { display:flex; gap:.5em; flex-shrink:0; align-items:center; flex-wrap:wrap; }
+		.btn-ver { display:inline-flex; align-items:center; gap:.35em; background:var(--azul); color:#fff!important; font-size:.72em; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.45em .9em; border-radius:5px; text-decoration:none; white-space:nowrap; transition:background .2s,transform .1s; }
+		.btn-ver:hover { background:var(--azul-hover); transform:translateY(-1px); }
+		.btn-dl  { display:inline-flex; align-items:center; gap:.35em; background:transparent; color:var(--azul)!important; font-size:.72em; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.45em .9em; border-radius:5px; text-decoration:none; white-space:nowrap; border:1.5px solid var(--azul); transition:all .2s; }
+		.btn-dl:hover { background:var(--azul-light); transform:translateY(-1px); }
+		.fin-section-title { font-size:1em; font-weight:700; color:var(--texto); text-transform:uppercase; letter-spacing:.06em; margin:1.8em 0 .8em; padding-bottom:.5em; border-bottom:2px solid var(--azul); display:flex; align-items:center; gap:.5em; }
+		.fin-section-title .badge-año { background:var(--azul); color:#fff; font-size:.7em; padding:.2em .7em; border-radius:3px; }
+		.trimestre-carpeta { background:var(--blanco); border:1px solid var(--gris-borde); border-radius:8px; margin-bottom:.8em; overflow:hidden; }
+		.trimestre-header { display:flex; align-items:center; gap:.8em; padding:.9em 1.2em; background:var(--gris-bg); cursor:pointer; user-select:none; transition:background .2s; }
+		.trimestre-header:hover { background:var(--azul-light); }
+		.trimestre-header h4 { margin:0; font-size:.92em; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--texto); flex:1; }
+		.tri-arrow { color:var(--azul); font-size:.75em; transition:transform .25s; }
+		.trimestre-header.open .tri-arrow { transform:rotate(90deg); }
+		.trimestre-body { display:none; padding:.6em 1.2em 1em; }
+		.trimestre-body.visible { display:block; }
+		.archivo-row { display:flex; align-items:center; gap:.7em; padding:.6em 0; border-bottom:1px solid #f1f5f9; flex-wrap:wrap; }
+		.archivo-row:last-child { border-bottom:none; }
+		.archivo-icono { font-size:1.1em; flex-shrink:0; }
+		.archivo-icono.pdf  { color:#b91c1c; }
+		.archivo-icono.xlsx { color:#15803d; }
+		.archivo-icono.zip  { color:#d97706; }
+		.archivo-nombre { flex:1; font-size:.87em; font-weight:500; color:var(--texto); min-width:120px; }
+		.archivo-tipo   { font-size:.72em; font-weight:700; color:var(--texto-sub); flex-shrink:0; }
+		.nota-legal { background:#f8fafc; border:1px solid var(--gris-borde); border-radius:8px; padding:1.2em 1.5em; margin-top:2.5em; font-size:.82em; color:var(--texto-sub); line-height:1.7; }
+		.nota-legal strong { color:var(--texto); }
+		@media screen and (max-width:680px) {
+			.fraccion-item { flex-wrap:wrap; }
+			.fraccion-acciones { width:100%; justify-content:flex-end; margin-top:.4em; }
+			.panel-box { padding:1em; }
+			.wrapper.style5 .inner { padding:2em 1em; }
+		}
+	</style>
+</head>
+<body class="is-preload">
+<div id="page-wrapper">
 
-			<header id="header">
-				<h1><a href="index.html">Santa Catarina Cuixtla</a></h1>
-				<nav id="nav">
-					<ul>
-						<li class="special">
-							<a href="#menu" class="menuToggle"><span>Menu</span></a>
-							<div id="menu">
-								<ul>
-									<li><a href="index.html">INICIO</a></li>
-									<li><a href="transparencia.html">TRANSPARENCIA 2026</a></li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</nav>
-			</header>
+<header id="header">
+	<h1><a href="index.html">Santa Catarina Cuixtla</a></h1>
+	<nav id="nav"><ul><li class="special">
+		<a href="#menu" class="menuToggle"><span>Menu</span></a>
+		<div id="menu"><ul>
+			<li><a href="index.html">INICIO</a></li>
+			<li><a href="transparencia.html">TRANSPARENCIA 2026</a></li>
+		</ul></div>
+	</li></ul></nav>
+</header>
 
-			<article id="main">
-				<header>
-					<h2>TRANSPARENCIA</h2>
-					<p>Gobierno Municipal 2026-2028 &nbsp;·&nbsp; Información pública de oficio</p>
-				</header>
+<article id="main">
+	<header>
+		<h2>TRANSPARENCIA</h2>
+		<p>Gobierno Municipal 2026-2028 &nbsp;·&nbsp; Información Pública de Oficio</p>
+		<div class="header-badges">
+			<span class="header-badge">Art. 70 LGTAIP — 48 Fracciones</span>
+			<span class="header-badge">Art. 71 LGTAIP</span>
+			<span class="header-badge">Informes Financieros Trimestrales</span>
+		</div>
+	</header>
 
-				<section class="wrapper style5">
-					<div class="inner">
+	<section class="wrapper style5"><div class="inner">
 
-						<p>De conformidad con la <strong>Ley de Disciplina Financiera</strong> y las disposiciones del
-						<strong>CONAC</strong>, el H. Ayuntamiento de Santa Catarina Cuixtla pone a disposición
-						de la ciudadanía la información financiera y de gestión municipal correspondiente
-						al ejercicio fiscal <strong>2026</strong>.</p>
-
-						<div class="trimestre-titulo">
-							<span class="badge">2026</span>
-							<h3>Primer Trimestre — Enero · Febrero · Marzo</h3>
-						</div>
-
-						<!-- CONAC -->
-						<div class="carpeta">
-							<div class="carpeta-header open" onclick="toggleCarpeta(this)">
-								<span>📁</span>
-								<h4>CONAC — Información Contable y Financiera</h4>
-								<span class="toggle-arrow">▶</span>
-							</div>
-							<div class="carpeta-body visible">
-								<ul class="doc-list">
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">1. FAIS</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/1. fais.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">2. Ayudas</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/2. ayudas.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">3. Gasto Federalizado</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/3. gasto federalizado.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">4. Obligaciones Pagadas</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/4. obligaciones pagadas.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">5. Programas Recursos Federalizados</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/5. programas recursos fed.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">6. Cuentas Bancarias</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/6. cuentas bancarias.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">7. Resultado de Evaluaciones</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/7. Resultado de evaluaciones.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon pdf">📄</span><span class="doc-name">8. FORTAMUN</span></div>
-										<span class="doc-size">PDF</span>
-										<a href="archivos/conac/8. fortamun.pdf" download class="btn-download">⬇ Descargar</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- ESTADOS FINANCIEROS ZIP -->
-						<div class="carpeta">
-							<div class="carpeta-header open" onclick="toggleCarpeta(this)">
-								<span>📁</span>
-								<h4>Estados Financieros — Fin 1er Trimestre 2026</h4>
-								<span class="toggle-arrow">▶</span>
-							</div>
-							<div class="carpeta-body visible">
-								<p style="font-size:0.87em; color:#4a5a7a; margin-bottom:0.8em;">
-									Paquete completo con los estados financieros del 1er trimestre 2026
-									(Notas Financieras + formatos 362A_ITAG / 362A_ITEF).
-								</p>
-								<div class="zip-destacado">
-									<div class="zip-info">
-										<span class="zip-icon">🗜️</span>
-										<div class="zip-desc">
-											<strong>estados2026.zip</strong>
-											<span>Todos los archivos del 1er Trimestre 2026</span>
-										</div>
-									</div>
-									<a href="archivos/estados-fin-1-2026/estados2026.zip" download class="btn-download zip">⬇ Descargar ZIP</a>
-								</div>
-							</div>
-						</div>
-
-						<!-- LEY DISCIPLINA FINANCIERA -->
-						<div class="carpeta">
-							<div class="carpeta-header open" onclick="toggleCarpeta(this)">
-								<span>📁</span>
-								<h4>Ley de Disciplina Financiera — Informes 1T 2026</h4>
-								<span class="toggle-arrow">▶</span>
-							</div>
-							<div class="carpeta-body visible">
-								<ul class="doc-list">
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Balance Presupuestario</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/balance presupuestario-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Analítico de Ingresos Detallado</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/edo analitico ing detallado-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Clasificación Funcional</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/edo clasificacion funcional-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Clasificación Objeto del Gasto</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/edo clasificacion objeto del gasto-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado Clasificación Servicios Personales</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/edo clasificacion servicios personales-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado por Clasificación Administrativa</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/edo por clasfificacion administrativa-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Estado de Situación Financiera Detallado</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/edo sit fin detallado-LDF.xls download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Informe de la Deuda y Otros Pasivos</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/inf de la deuda y otros pasivos-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-									<li>
-										<div class="doc-info"><span class="doc-icon xlsx">📊</span><span class="doc-name">Informe de Obligaciones Diferentes</span></div>
-										<span class="doc-size">Excel</span>
-										<a href="archivos/ley/inf obligaciones diferentes-LDF.xls" download class="btn-download excel">⬇ Descargar</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="nota-info">
-							<strong>Nota:</strong> Los archivos PDF requieren
-							<a href="https://get.adobe.com/es/reader/" target="_blank" style="color:#7ab8e8;">Adobe Acrobat Reader</a>.
-							Los archivos Excel (.xlsx) pueden abrirse con Microsoft Excel, LibreOffice Calc o Google Sheets.
-							El archivo ZIP requiere WinRAR, 7-Zip o el descompresor integrado de Windows.<br><br>
-							Si algún documento no está disponible contáctanos en
-							<a href="index.html#cta" style="color:#7ab8e8;">Contáctanos</a>.
-						</div>
-
-					</div>
-				</section>
-			</article>
-
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; SHAGUS</li>
-					<li>Design: <a href="">Soluciones Informáticas</a></li>
-				</ul>
-			</footer>
-
+		<div class="intro-text">
+			De conformidad con la <strong>Ley General de Transparencia y Acceso a la Información Pública (LGTAIP)</strong>,
+			el H. Ayuntamiento Constitucional de Santa Catarina Cuixtla publica la información obligatoria de los
+			<strong>Artículos 70 y 71</strong>, así como los informes financieros trimestrales conforme al <strong>CONAC</strong>
+			y la <strong>Ley de Disciplina Financiera</strong>. Haz clic en <em>👁 Ver</em> para abrir en nueva pestaña
+			o <em>⬇ Descargar</em> para guardar el archivo.
 		</div>
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script>
-			function toggleCarpeta(header) {
-				header.classList.toggle('open');
-				header.nextElementSibling.classList.toggle('visible');
-			}
-		</script>
-	</body>
+		<!-- TABS -->
+		<div class="tabs-nav">
+			<button class="tab-btn active" onclick="switchTab('art70',this)">Artículo 70 — 48 Fracciones</button>
+			<button class="tab-btn" onclick="switchTab('art71',this)">Artículo 71</button>
+			<button class="tab-btn" onclick="switchTab('financiero',this)">Informes Financieros</button>
+		</div>
+
+		<!-- ═══ TAB ART. 70 ═══ -->
+		<div id="tab-art70" class="tab-panel active"><div class="panel-box">
+			<p class="panel-desc">El <strong>Artículo 70 de la LGTAIP</strong> establece 48 fracciones de información que todos los sujetos obligados deben publicar y mantener actualizadas.</p>
+
+			<!-- Macro para cada fracción: num | titulo | desc | ruta -->
+			<div class="fraccion-item">
+				<div class="fraccion-num">I</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Marco normativo aplicable</div>
+					<div class="fraccion-desc">Leyes, reglamentos, acuerdos, decretos, actos y demás disposiciones jurídicas que rigen al sujeto obligado.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac01-marco-normativo.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac01-marco-normativo.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">II</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Estructura orgánica</div>
+					<div class="fraccion-desc">Estructura orgánica completa, las atribuciones y responsabilidades que corresponden a cada área.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac02-estructura-organica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac02-estructura-organica.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">III</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Facultades de cada área</div>
+					<div class="fraccion-desc">Las facultades de cada área del sujeto obligado.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac03-facultades-areas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac03-facultades-areas.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">IV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Metas y objetivos de unidades administrativas</div>
+					<div class="fraccion-desc">Metas y objetivos de las unidades administrativas conforme a sus programas operativos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac04-metas-objetivos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac04-metas-objetivos.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">V</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Indicadores de interés público</div>
+					<div class="fraccion-desc">Indicadores relacionados con temas de interés público o trascendencia social.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac05-indicadores.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac05-indicadores.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">VI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Directorio de servidores públicos</div>
+					<div class="fraccion-desc">Nombre, cargo, RFC, domicilio legal, teléfono y correo electrónico de los servidores públicos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac06-directorio.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac06-directorio.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">VII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Remuneraciones de servidores públicos</div>
+					<div class="fraccion-desc">La remuneración bruta y neta de todos los servidores públicos de base o de confianza.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac07-remuneraciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac07-remuneraciones.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">VIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Gastos de representación y viáticos</div>
+					<div class="fraccion-desc">Los gastos de representación y viáticos de los servidores públicos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac08-viaticos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac08-viaticos.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">IX</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Total de plazas y vacantes</div>
+					<div class="fraccion-desc">El número total de las plazas y, en su caso, las vacantes disponibles.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac09-plazas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac09-plazas.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">X</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Contrataciones de servicios por honorarios</div>
+					<div class="fraccion-desc">Nombres de prestadores de servicios, servicios contratados, monto de honorarios y período de contratación.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac10-honorarios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac10-honorarios.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Declaración de situación patrimonial</div>
+					<div class="fraccion-desc">La declaración patrimonial de los servidores públicos que así lo determinen las leyes.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac11-declaracion-patrimonial.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac11-declaracion-patrimonial.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Domicilio de la Unidad de Transparencia</div>
+					<div class="fraccion-desc">El domicilio de la Unidad de Transparencia y dirección electrónica para recibir solicitudes de información.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac12-unidad-transparencia.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac12-unidad-transparencia.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Licitaciones, contratos y convenios</div>
+					<div class="fraccion-desc">Las convocatorias a concursos, licitaciones, contratos y convenios celebrados.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac13-contratos-licitaciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac13-contratos-licitaciones.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XIV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Permisos, concesiones, licencias y autorizaciones</div>
+					<div class="fraccion-desc">Los permisos, concesiones, licencias, autorizaciones, habilitaciones y demás actos administrativos otorgados.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac14-permisos-concesiones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac14-permisos-concesiones.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Presupuesto asignado e informes de gasto trimestral</div>
+					<div class="fraccion-desc">El presupuesto asignado, así como los informes del ejercicio trimestral del gasto.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac15-presupuesto.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac15-presupuesto.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XVI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Informes de actividades</div>
+					<div class="fraccion-desc">Los informes de actividades que los servidores públicos deban rendir.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac16-informes-actividades.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac16-informes-actividades.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XVII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Estadísticas generadas</div>
+					<div class="fraccion-desc">Las estadísticas que genere en cumplimiento de sus facultades, competencias o funciones.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac17-estadisticas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac17-estadisticas.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XVIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Avance trimestral en programas y proyectos</div>
+					<div class="fraccion-desc">Informes de avance trimestral sobre el cumplimiento de objetivos y metas de los programas.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac18-avance-programas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac18-avance-programas.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XIX</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Padrón de beneficiarios de programas sociales</div>
+					<div class="fraccion-desc">El padrón de beneficiarios de los programas sociales que ejecute el sujeto obligado.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac19-padron-beneficiarios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac19-padron-beneficiarios.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XX</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Convocatorias a concursos de cargos públicos</div>
+					<div class="fraccion-desc">Las convocatorias a concursos para ocupar cargos públicos y los resultados de los mismos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac20-convocatorias.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac20-convocatorias.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Inventario de bienes muebles e inmuebles</div>
+					<div class="fraccion-desc">El inventario de bienes muebles e inmuebles en posesión y propiedad del sujeto obligado.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac21-inventario-bienes.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac21-inventario-bienes.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Recomendaciones de organismos garantes</div>
+					<div class="fraccion-desc">Las recomendaciones emitidas por los organismos garantes de derechos humanos y atención a las mismas.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac22-recomendaciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac22-recomendaciones.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Resoluciones y laudos</div>
+					<div class="fraccion-desc">Las resoluciones y laudos emitidos en procesos o procedimientos seguidos en forma de juicio.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac23-resoluciones-laudos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac23-resoluciones-laudos.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXIV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Mecanismos de participación ciudadana</div>
+					<div class="fraccion-desc">Los mecanismos de participación ciudadana.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac24-participacion-ciudadana.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac24-participacion-ciudadana.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Programas de servicios o prestaciones</div>
+					<div class="fraccion-desc">Los programas que ofrecen, incluyendo población objetivo, trámites, tiempos de respuesta, requisitos y formatos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac25-programas-servicios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac25-programas-servicios.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXVI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Trámites, requisitos y formatos</div>
+					<div class="fraccion-desc">Los trámites, requisitos y formatos que ofrecen.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac26-tramites-formatos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac26-tramites-formatos.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXVII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Información financiera del presupuesto</div>
+					<div class="fraccion-desc">La información financiera sobre el presupuesto asignado, modificado y ejercido.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac27-info-financiera.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac27-info-financiera.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXVIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Deuda pública</div>
+					<div class="fraccion-desc">La información relativa a la deuda pública.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac28-deuda-publica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac28-deuda-publica.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXIX</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Información de interés público</div>
+					<div class="fraccion-desc">La información de interés público que de acuerdo a sus funciones deba difundir.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac29-interes-publico.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac29-interes-publico.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXX</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Asesoría jurídica gratuita</div>
+					<div class="fraccion-desc">Los servicios de asesoría jurídica gratuita que preste el sujeto obligado.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac30-asesoria-juridica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac30-asesoria-juridica.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Mecanismos e instrumentos de participación</div>
+					<div class="fraccion-desc">Mecanismos e instrumentos de participación ciudadana, incluidos resultados de consultas realizadas.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac31-mecanismos-participacion.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac31-mecanismos-participacion.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Solicitudes de acceso a la información recibidas</div>
+					<div class="fraccion-desc">Las solicitudes de acceso a la información recibidas y las respuestas emitidas.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac32-solicitudes-info.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac32-solicitudes-info.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Acceso a la información para personas con discapacidad</div>
+					<div class="fraccion-desc">Acciones y resultados para garantizar el acceso a la información de personas con discapacidad.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac33-discapacidad.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac33-discapacidad.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXIV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Información curricular de servidores públicos</div>
+					<div class="fraccion-desc">Información curricular desde nivel de jefe de departamento hasta el titular del sujeto obligado.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac34-curricula-servidores.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac34-curricula-servidores.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Sanciones y multas a servidores públicos</div>
+					<div class="fraccion-desc">Seguros o garantías contratados, así como las sanciones y multas aplicadas a servidores públicos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac35-sanciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac35-sanciones.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXVI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Servicios que ofrece con estándares de calidad</div>
+					<div class="fraccion-desc">Los servicios que ofrece, señalando los estándares de calidad y los trámites para acceder a ellos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac36-servicios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac36-servicios.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXVII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Listado de concesiones, contratos y convenios otorgados</div>
+					<div class="fraccion-desc">Listado especificando los titulares de concesiones, contratos, convenios, permisos, licencias o autorizaciones.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac37-concesiones-listado.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac37-concesiones-listado.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXVIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Información sobre obra pública</div>
+					<div class="fraccion-desc">La información detallada de las obras públicas ejecutadas.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac38-obra-publica.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac38-obra-publica.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XXXIX</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Gastos de comunicación social y publicidad oficial</div>
+					<div class="fraccion-desc">Los montos destinados a gastos relativos a comunicación social y publicidad oficial.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac39-comunicacion-social.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac39-comunicacion-social.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XL</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Actas y resoluciones del Comité de Transparencia</div>
+					<div class="fraccion-desc">Las actas y resoluciones del Comité de Transparencia del sujeto obligado.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac40-comite-transparencia.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac40-comite-transparencia.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Evaluaciones y encuestas a programas públicos</div>
+					<div class="fraccion-desc">Las evaluaciones y encuestas que se hagan a programas financiados con recursos públicos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac41-evaluaciones-encuestas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac41-evaluaciones-encuestas.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Estudios financiados con recursos públicos</div>
+					<div class="fraccion-desc">Los estudios financiados con recursos públicos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac42-estudios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac42-estudios.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Listado de jubilados y pensionados</div>
+					<div class="fraccion-desc">El listado de jubilados y pensionados y el monto que reciben.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac43-jubilados-pensionados.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac43-jubilados-pensionados.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLIV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Ingresos recibidos por cualquier concepto</div>
+					<div class="fraccion-desc">Los ingresos recibidos por cualquier concepto, señalando responsables de recibirlos, administrarlos y ejercerlos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac44-ingresos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac44-ingresos.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Donaciones a terceros en dinero o en especie</div>
+					<div class="fraccion-desc">Las donaciones hechas a terceros en dinero o en especie.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac45-donaciones-terceros.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac45-donaciones-terceros.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLVI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Catálogo de disposición documental y guía de archivos</div>
+					<div class="fraccion-desc">El catálogo de disposición documental y la guía de archivos.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac46-catalogo-archivos.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac46-catalogo-archivos.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLVII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Actas de sesiones del Ayuntamiento</div>
+					<div class="fraccion-desc">Las actas de las sesiones del Ayuntamiento y el orden del día de las mismas.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac47-actas-sesiones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac47-actas-sesiones.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">XLVIII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Cualquier otra información útil o relevante</div>
+					<div class="fraccion-desc">Cualquier otra información útil o relevante, además de la que responda a las preguntas más frecuentes.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art70/frac48-informacion-util.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art70/frac48-informacion-util.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+		</div></div><!-- /tab-art70 -->
+
+		<!-- ═══ TAB ART. 71 ═══ -->
+		<div id="tab-art71" class="tab-panel"><div class="panel-box">
+			<p class="panel-desc">El <strong>Artículo 71 de la LGTAIP</strong> establece obligaciones específicas de transparencia para municipios, adicionales a las del Artículo 70.</p>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">I</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Asociaciones y organizaciones vecinales o civiles con registro municipal</div>
+					<div class="fraccion-desc">El listado de las asociaciones y organizaciones vecinales o civiles con registro municipal.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art71/art71-frac01-asociaciones.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art71/art71-frac01-asociaciones.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">II</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Obras públicas, montos y contratistas</div>
+					<div class="fraccion-desc">Las obras públicas con sus montos de ejecución y nombre de los contratistas o proveedores.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art71/art71-frac02-obras.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art71/art71-frac02-obras.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">III</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Presupuesto participativo</div>
+					<div class="fraccion-desc">La información relativa al presupuesto participativo y el ejercicio del mismo.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art71/art71-frac03-presupuesto-participativo.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art71/art71-frac03-presupuesto-participativo.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">IV</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Plan o programa de desarrollo municipal</div>
+					<div class="fraccion-desc">El Plan de Desarrollo Municipal y el seguimiento a sus objetivos e indicadores.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art71/art71-frac04-plan-desarrollo.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art71/art71-frac04-plan-desarrollo.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">V</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Información catastral del municipio</div>
+					<div class="fraccion-desc">La información catastral del municipio.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art71/art71-frac05-catastro.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art71/art71-frac05-catastro.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">VI</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Tabla de valores unitarios de suelo y construcciones</div>
+					<div class="fraccion-desc">La tabla de valores unitarios de suelo y construcciones que sirven de base para las contribuciones sobre propiedad inmobiliaria.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art71/art71-frac06-valores-unitarios.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art71/art71-frac06-valores-unitarios.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+			<div class="fraccion-item">
+				<div class="fraccion-num">VII</div>
+				<div class="fraccion-info">
+					<div class="fraccion-titulo">Derechos, contribuciones y tarifas vigentes</div>
+					<div class="fraccion-desc">Los derechos, contribuciones, tarifas y tasas vigentes.</div>
+				</div>
+				<div class="fraccion-acciones">
+					<a href="archivos/art71/art71-frac07-derechos-tarifas.pdf" target="_blank" class="btn-ver">👁 Ver</a>
+					<a href="archivos/art71/art71-frac07-derechos-tarifas.pdf" download class="btn-dl">⬇ Descargar</a>
+				</div>
+			</div>
+
+		</div></div><!-- /tab-art71 -->
+
+		<!-- ═══ TAB INFORMES FINANCIEROS ═══ -->
+		<div id="tab-financiero" class="tab-panel"><div class="panel-box">
+			<p class="panel-desc">Informes financieros trimestrales del ejercicio fiscal <strong>2026</strong>, publicados conforme al <strong>CONAC</strong> y la <strong>Ley de Disciplina Financiera</strong>.</p>
+
+			<div class="fin-section-title">
+				<span class="badge-año">2026</span>
+				Primer Trimestre — Enero · Febrero · Marzo
+			</div>
+
+			<!-- CONAC -->
+			<div class="trimestre-carpeta">
+				<div class="trimestre-header open" onclick="toggleTri(this)">
+					<span>📁</span><h4>CONAC — Información Contable y Financiera</h4>
+					<span class="tri-arrow">▶</span>
+				</div>
+				<div class="trimestre-body visible">
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">1. FAIS</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/1. fais.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/1. fais.pdf" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">2. Ayudas</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/2. ayudas.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/2. ayudas.pdf" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">3. Gasto Federalizado</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/3. gasto federalizado.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/3. gasto federalizado.pdf" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">4. Obligaciones Pagadas</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/4. obligaciones pagadas.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/4. obligaciones pagadas.pdf" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">5. Programas Recursos Federalizados</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/5. programas recursos fed.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/5. programas recursos fed.pdf" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">6. Cuentas Bancarias</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/6. cuentas bancarias.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/6. cuentas bancarias.pdf" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">7. Resultado de Evaluaciones</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/7. Resultado de evaluaciones.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/7. Resultado de evaluaciones.pdf" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono pdf">📄</span><span class="archivo-nombre">8. FORTAMUN</span><span class="archivo-tipo">PDF</span><a href="archivos/conac/8. fortamun.pdf" target="_blank" class="btn-ver">👁 Ver</a><a href="archivos/conac/8. fortamun.pdf" download class="btn-dl">⬇</a></div>
+				</div>
+			</div>
+
+			<!-- Estados Financieros ZIP -->
+			<div class="trimestre-carpeta">
+				<div class="trimestre-header open" onclick="toggleTri(this)">
+					<span>📁</span><h4>Estados Financieros — Fin 1er Trimestre 2026</h4>
+					<span class="tri-arrow">▶</span>
+				</div>
+				<div class="trimestre-body visible">
+					<div class="archivo-row">
+						<span class="archivo-icono zip">🗜️</span>
+						<span class="archivo-nombre">Paquete completo — Notas Financieras + formatos 362A_ITAG / 362A_ITEF</span>
+						<span class="archivo-tipo">ZIP</span>
+						<a href="archivos/estados-fin-1-2026/estados fin 1 2026.zip" download class="btn-ver" style="background:#d97706;">⬇ Descargar ZIP</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- LDF -->
+			<div class="trimestre-carpeta">
+				<div class="trimestre-header open" onclick="toggleTri(this)">
+					<span>📁</span><h4>Ley de Disciplina Financiera — 1T 2026</h4>
+					<span class="tri-arrow">▶</span>
+				</div>
+				<div class="trimestre-body visible">
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Balance Presupuestario</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/balance presupuestario-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/balance presupuestario-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Estado Analítico de Ingresos Detallado</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/edo analitico ing detallado-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/edo analitico ing detallado-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Estado Clasificación Funcional</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/edo clasificacion funcional-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/edo clasificacion funcional-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Estado Clasificación Objeto del Gasto</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/edo clasificacion objeto del gasto-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/edo clasificacion objeto del gasto-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Estado Clasificación Servicios Personales</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/edo clasificacion servicios personales-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/edo clasificacion servicios personales-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Estado por Clasificación Administrativa</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/edo por clasficacion administrativa-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/edo por clasficacion administrativa-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Estado de Situación Financiera Detallado</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/edo sit fin detallado-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/edo sit fin detallado-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Informe de la Deuda y Otros Pasivos</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/inf de la deuda y otros pasivos-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/inf de la deuda y otros pasivos-LDF.xlsx" download class="btn-dl">⬇</a></div>
+					<div class="archivo-row"><span class="archivo-icono xlsx">📊</span><span class="archivo-nombre">Informe de Obligaciones Diferentes</span><span class="archivo-tipo">Excel</span><a href="archivos/ley-disciplina-fin/inf obligaciones diferentes-LDF.xlsx" target="_blank" class="btn-ver" style="background:#15803d;">👁 Ver</a><a href="archivos/ley-disciplina-fin/inf obligaciones diferentes-LDF.xlsx" download class="btn-dl">⬇</a></div>
+				</div>
+			</div>
+
+		</div></div><!-- /tab-financiero -->
+
+		<div class="nota-legal">
+			<strong>Fundamento legal:</strong> Ley General de Transparencia y Acceso a la Información Pública (LGTAIP), Artículos 70 y 71. Normas emitidas por el CONAC. Ley de Disciplina Financiera de las Entidades Federativas y los Municipios.<br><br>
+			Para solicitudes adicionales, acudir a la <strong>Unidad de Transparencia</strong> del H. Ayuntamiento de Santa Catarina Cuixtla, Miahuatlán de Porfirio Díaz, Oaxaca, o contactar en la sección <a href="index.html#cta" style="color:var(--azul);">Contáctanos</a>.
+		</div>
+
+	</div></section>
+</article>
+
+<footer id="footer">
+	<ul class="icons">
+		<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+		<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+		<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+		<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+	</ul>
+	<ul class="copyright"><li>&copy; SHAGUS</li><li>Design: <a href="">Soluciones Informáticas</a></li></ul>
+</footer>
+
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+function switchTab(id, btn) {
+	document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+	document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+	document.getElementById('tab-' + id).classList.add('active');
+	btn.classList.add('active');
+}
+function toggleTri(header) {
+	header.classList.toggle('open');
+	header.nextElementSibling.classList.toggle('visible');
+}
+</script>
+</body>
 </html>
